@@ -1,16 +1,12 @@
-# Compiled class file
+# ==== Java ====
 *.class
-
-# Log file
 *.log
+hs_err_pid*
+*.hprof
+replay_pid*
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+# ==== Build Artifacts ====
+# Si usan empaquetado, no suban binarios al repo; publíquenlos en Releases
 *.jar
 *.war
 *.nar
@@ -19,6 +15,48 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# ==== Maven ====
+target/
+
+# ==== Gradle ====
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ==== NetBeans ====
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+# Por si hay submódulos/proyectos anidados
+**/nbproject/private/
+**/build/
+**/dist/
+
+# ==== Eclipse ====
+.project
+.classpath
+.settings/
+.metadata/
+bin/
+
+# ==== IntelliJ IDEA ====
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# ==== VS Code ====
+.vscode/
+
+# ==== OS Files ====
+.DS_Store
+Thumbs.db
+
+# ==== Logs & Temp ====
+logs/
+*.tmp
+*.swp
+*.swo
