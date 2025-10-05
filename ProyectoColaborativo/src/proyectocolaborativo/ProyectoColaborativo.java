@@ -29,11 +29,48 @@ public class ProyectoColaborativo {
         System.out.println("Ingrese su apellido: ");
         apellido = entrada.nextLine();
         
-        System.out.println("Ingrese su correo electronico: ");
+        
+         //Validación para el email
+        do{
+            
+          System.out.println("Ingrese su correo electronico: ");
         email = entrada.nextLine();
         
-        System.out.println("Ingrese su numero de telefono: ");
+        if(!email.contains("@")){
+            System.out.println("Correo invalido, debe contener '@', intente nuevamente ");
+        }
+        
+        }while(!email.contains("@"));
+        
+        //Validación para el teléfono
+        
+        boolean valido;
+        
+        do {            
+            System.out.println("Ingrese su numero de telefono: ");
         telefono = entrada.nextLine();
+        
+        valido = true;
+        
+          for (int i = 0; i < telefono.length(); i++) {
+                if (!Character.isDigit(telefono.charAt(i))) {
+                    System.out.println("Numero invalido, solo debe contener numeros ");
+                    valido = false;
+                    break;
+                }
+                
+            }
+        
+        if (valido && telefono.length() < 8){
+          
+            System.out.println("Numero invalido, debe tener al menos 8 digitos");
+            valido = false;
+            }
+           
+        
+        } while (!valido);
+        
+        
         
         System.out.println("Ingrese su direccion: ");
         direccion = entrada.nextLine();
