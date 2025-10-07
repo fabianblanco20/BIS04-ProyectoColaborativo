@@ -24,7 +24,7 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
-                    registrarUsuario(scanner);
+                    registrarUsuario(scanner); 
                     break;
                 case 2:
                     mostrarHistorial();
@@ -49,7 +49,6 @@ public class Menu {
         System.out.print("Teléfono: ");
         String telefono = scanner.nextLine().trim();
 
-        // Validaciones básicas
         if (nombre.isEmpty() || correo.isEmpty() || telefono.isEmpty()) {
             System.out.println("⚠ Todos los campos son obligatorios.");
             return;
@@ -66,9 +65,9 @@ public class Menu {
         Usuario u = new Usuario(nombre, correo, telefono);
         try {
             Almacenamiento.guardar(u);
-            System.out.println("✅ Usuario guardado en 'ProyectoColaborativo/usuarios.txt'.");
+            System.out.println(" Usuario guardado en 'ProyectoColaborativo/usuarios.txt'.");
         } catch (Exception e) {
-            System.out.println("❌ Error al guardar: " + e.getMessage());
+            System.out.println(" Error al guardar: " + e.getMessage());
         }
     }
 
