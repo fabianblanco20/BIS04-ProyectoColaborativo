@@ -1,45 +1,32 @@
+    System.out.println("\n--- Registrar usuario ---");
 
-public class Menu {
+    System.out.print("Nombre completo: ");
+    String nombre = scanner.nextLine().trim();
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    System.out.print("Correo electrónico: ");
+    String correo = scanner.nextLine().trim();
 
-        while (true) {
-            System.out.println("\nMENÚ PRINCIPAL");
-            System.out.println("1. Registrar usuario");
-            System.out.println("2. Ver historial de usuarios");
-            System.out.println("3. Salir");
-            System.out.print("Seleccione una opción (1-3): ");
+    System.out.print("Teléfono: ");
+    String telefono = scanner.nextLine().trim();
 
-            String entrada = scanner.nextLine().trim();
-
-            if (!entrada.matches("[1-3]")) {
-                System.out.println("⚠ Entrada inválida. Escriba 1, 2 o 3.");
-                continue;
-            }
-
-            int opcion = Integer.parseInt(entrada);
-
-            switch (opcion) {
-                case 1:
-                    registrarUsuario(scanner); 
-                    break;
-                case 2:
-                    mostrarHistorial();        
-                    break;
-                case 3:
-                    System.out.println("¡Adios!");
-                    scanner.close();
-                    return;
-            }
-        }
+    if (nombre.isEmpty() || correo.isEmpty() || telefono.isEmpty()) {
+        System.out.println("⚠ Todos los campos son obligatorios.");
+        return;
+    }
+    if (!correo.contains("@") || !correo.contains(".")) {
+        System.out.println("⚠ Correo inválido.");
+        return;
+    }
+    if (!telefono.matches("\\d{8,15}")) {
+        System.out.println("⚠ Teléfono inválido. Use solo dígitos (8 a 15).");
+        return;
     }
 
-    private static void registrarUsuario(Scanner scanner) {
-        System.out.println("[TODO] Registrar usuario (Issue #5)");
-    }
-
-    private static void mostrarHistorial() {
-        System.out.println("[TODO] Mostrar historial (Issue #6)");
+    Usuario u = new Usuario(nombre, correo, telefono);
+    try {
+        Almacenamiento.guardar(u);
+        System.out.println(" Usuario guardado en 'ProyectoColaborativo/usuarios.txt'.");
+    } catch (Exception e) {
+        System.out.println(" Error al guardar: " + e.getMessage());
     }
 }
